@@ -1,0 +1,10 @@
+============================================================
+AI DIAGNOSIS SYSTEM - SUMMARY REPORT
+============================================================
+
+Data Shape: (146900, 65)
+Disease Categories: 6
+Disease Accuracy: 0.762
+Infectious Accuracy: 1.000
+
+Top Features:

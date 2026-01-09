@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPatient AI | Advanced Clinical Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Glass Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain-circuit"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>MediPatient AI</h1>
+                        <span class="logo-subtitle">Clinical Intelligence Suite v4.0</span>
+                    </div>
+                </div>
+                <div class="ai-status">
+                    <div class="status-indicator active"></div>
+                    <span>AI Online | Real-time Processing</span>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="nav-menu">
+                <div class="nav-group">
+                    <span class="nav-label">CLINICAL CORE</span>
+                    <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                        <i class="fas fa-heart-pulse"></i>
+                        <span>Clinical Dashboard</span>
+                        <div class="nav-badge">AI</div>
+                    </a>
+                    <a href="#reports" class="nav-item" data-section="reports">
+                        <i class="fas fa-file-waveform"></i>
+                        <span>AI Reports</span>
+                    </a>
+                    <a href="#patients" class="nav-item" data-section="patients">
+                        <i class="fas fa-user-group"></i>
+                        <span>Patient Hub</span>
+                    </a>
+                </div>
+                
+                <div class="nav-group">
+                    <span class="nav-label">INTELLIGENCE</span>
+                    <a href="#analytics" class="nav-item" data-section="analytics">
+                        <i class="fas fa-chart-network"></i>
+                        <span>Clinical Analytics</span>
+                    </a>
+                    <a href="#knowledge" class="nav-item" data-section="knowledge">
+                        <i class="fas fa-brain"></i>
+                        <span>Medical Knowledge</span>
+                    </a>
+                    
+                </div>
+            </nav>
+            
+            <!-- Quick Stats -->
+            <div class="sidebar-footer">
+                <div class="quick-stats">
+                    <div class="stat">
+                        <i class="fas fa-microchip"></i>
+                        <span>Neural Model v4.2</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-shield"></i>
+                        <span>HIPAA Secure</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-bolt"></i>
+                        <span>< 3s Response</span>
+                    </div>
+                </div>
+                <button class="support-btn" id="supportBtn">
+                    <i class="fas fa-headset"></i>
+                    <span>Clinical Support</span>
+                    <div class="pulse-ring"></div>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar glass">
+                <div class="breadcrumb">
+                    <span>Clinical Intelligence</span>
+                    <i class="fas fa-chevron-right"></i>
+                    <span class="current">AI-Assisted Diagnosis</span>
+                </div>
+                
+                <div class="header-controls">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search clinical records, labs, medications..." id="searchInput">
+                        <button class="voice-search" id="voiceSearch">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="user-menu">
+                       
+                        <div class="notifications-wrapper">
+                            <button class="notifications" id="notificationsBtn">
+                                <i class="fas fa-bell"></i>
+                                <span class="notification-count">3</span>
+                            </button>
+                            <div class="notifications-dropdown glass" id="notificationsDropdown">
+                                <div class="notification-item unread">
+                                    <i class="fas fa-virus"></i>
+                                    <div>
+                                        <strong>New Lab Results</strong>
+                                        <span>Patient #145 - Elevated CRP</span>
+                                        <small>2 min ago</small>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <div>
+                                        <strong>Appointment Reminder</strong>
+                                        <span>Annual checkup - Room 304</span>
+                                        <small>1 hour ago</small>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <i class="fas fa-syringe"></i>
+                                    <div>
+                                        <strong>Medication Alert</strong>
+                                        <span>Warfarin levels critical</span>
+                                        <small>3 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Patient Input Section -->
+                <section class="card patient-input-card glass holographic">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="title-icon">
+                                <i class="fas fa-user-injured"></i>
+                                <div class="title-glow"></div>
+                            </div>
+                            <div>
+                                <h2>Clinical Assessment</h2>
+                                <p class="card-subtitle">Real-time patient evaluation & analysis</p>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" id="clearForm" title="Clear Form">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                            <button class="btn-icon" id="voiceInput" title="Voice Input">
+                                <i class="fas fa-microphone-alt"></i>
+                            </button>
+                            <button class="btn-icon" id="showTestCases" title="Test Cases">
+                                <i class="fas fa-vial"></i>
+                            </button>
+                            <button class="btn-icon" id="saveTemplate" title="Save Template">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Input Tabs -->
+                    <div class="input-tabs">
+                        <button class="tab-btn active" data-tab="demographics">
+                            <i class="fas fa-id-card"></i>
+                            Demographics
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="vitals">
+                            <i class="fas fa-heartbeat"></i>
+                            Vital Signs
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="symptoms">
+                            <i class="fas fa-stethoscope"></i>
+                            Symptoms
+                            <div class="tab-indicator"></div>
+                        </button>
+                        <button class="tab-btn" data-tab="history">
+                            <i class="fas fa-history"></i>
+                            History
+                            <div class="tab-indicator"></div>
+                        </button>
+                    </div>
+                    
+                    <!-- Input Form -->
+                    <form id="clinicalForm" class="input-form">
+                        <!-- Demographics Tab -->
+                        <div class="tab-content active" id="demographicsTab">
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label class="input-label">
+                                        <i class="fas fa-birthday-cake"></i>
+                                        Patient Age
+                                    </label>
+                                    <div class="range-input">
+                                        <div class="range-header">
+                                            <span class="range-label">Age Range</span>
+                                            <span class="range-value" id="ageValue">45 years</span>
+                                        </div>
+                                        <input type="range" id="ageSlider" min="0" max="120" value="45" class="custom-slider">
+                                        <div class="range-display">
+                                            <button class="range-btn" data-action="decrease">−</button>
+                                            <input type="number" id="age" min="0" max="120" value="45" class="number-input">
+                                            <button class="range-btn" data-action="increase">+</button>
+                                            <span class="unit">years</span>
+                                        </div>
+                                        <div class="age-category" id="ageCategory">Adult</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label class="input-label">
+                                        <i class="fas fa-venus-mars"></i>
+                                        Biological Sex
+                                    </label>
+                                    <div class="gender-selector">
+                                        <label class="gender-option">
+                                            <input type="radio" name="gender" value="male" checked>
+                                            <span class="gender-icon">
+                                                <i class="fas fa-mars"></i>
+                                            </span>
+                                            <span class="gender-label">Male</span>
+                                        </label>
+                                        <label class="gender-option">
+                                            <input type="radio" name="gender" value="female">
+                                            <span class="gender-icon">
+                                                <i class="fas fa-venus"></i>
+                                            </span>
+                                            <span class="gender-label">Female</span>
+                                        </label>
+                                        <label class="gender-option">
+                                            <input type="radio" name="gender" value="other">
+                                            <span class="gender-icon">
+                                                <i class="fas fa-genderless"></i>
+                                            </span>
+                                            <span class="gender-label">Other</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label class="input-label">
+                                        <i class="fas fa-ruler"></i>
+                                        Body Metrics
+                                    </label>
+                                    <div class="metrics-grid">
+                                        <div class="metric-input">
+                                            <label>Height (cm)</label>
+                                            <div class="metric-control">
+                                                <input type="number" id="height" value="170" min="50" max="250">
+                                                <span class="metric-unit">cm</span>
+                                            </div>
+                                        </div>
+                                        <div class="metric-input">
+                                            <label>Weight (kg)</label>
+                                            <div class="metric-control">
+                                                <input type="number" id="weight" value="70" min="10" max="300">
+                                                <span class="metric-unit">kg</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bmi-display" id="bmiDisplay">
+                                        BMI: 24.2 (Normal)
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pain Assessment -->
+                            <div class="pain-assessment glass">
+                                <div class="assessment-header">
+                                    <i class="fas fa-tachometer-alt-fast"></i>
+                                    <div>
+                                        <h3>Pain & Acuity Assessment</h3>
+                                        <p>Rate patient's current pain level</p>
+                                    </div>
+                                    <div class="pain-value" id="painValue">
+                                        <span>3.0</span>
+                                        <small>/10</small>
+                                    </div>
+                                </div>
+                                <input type="range" id="painSlider" min="0" max="10" step="0.5" value="3" class="pain-slider">
+                                <div class="pain-scale">
+                                    <span>No Pain</span>
+                                    <span>Mild</span>
+                                    <span>Moderate</span>
+                                    <span>Severe</span>
+                                    <span>Worst</span>
+                                </div>
+                                <div class="pain-description" id="painDescription">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Mild discomfort - manageable with OTC medication</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vital Signs Tab -->
+                        <div class="tab-content" id="vitalsTab">
+                            <div class="vital-signs-grid">
+                                <!-- Temperature -->
+                                <div class="vital-card glass">
+                                    <div class="vital-header">
+                                        <div class="vital-icon">
+                                            <i class="fas fa-thermometer-half"></i>
+                                        </div>
+                                        <div class="vital-info">
+                                            <span class="vital-label">Temperature</span>
+                                            <span class="vital-value" id="tempValue">37.0°C</span>
+                                        </div>
+                                        <div class="vital-trend" id="tempTrend">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                    </div>
+                                    <input type="range" id="tempSlider" min="35" max="42" step="0.1" value="37.0" class="vital-slider">
+                                    <div class="vital-status" id="tempStatus">
+                                        <span class="status-dot normal"></span>
+                                        <span>Normal</span>
+                                        <span class="status-range">(36.5-37.5°C)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Heart Rate -->
+                                <div class="vital-card glass">
+                                    <div class="vital-header">
+                                        <div class="vital-icon">
+                                            <i class="fas fa-heart"></i>
+                                            <div class="heartbeat"></div>
+                                        </div>
+                                        <div class="vital-info">
+                                            <span class="vital-label">Heart Rate</span>
+                                            <span class="vital-value" id="hrValue">75 bpm</span>
+                                        </div>
+                                    </div>
+                                    <input type="range" id="hrSlider" min="40" max="200" value="75" class="vital-slider">
+                                    <div class="vital-status" id="hrStatus">
+                                        <span class="status-dot normal"></span>
+                                        <span>Normal</span>
+                                        <span class="status-range">(60-100 bpm)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Blood Pressure -->
+                                <div class="vital-card wide glass">
+                                    <div class="vital-header">
+                                        <div class="vital-icon">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                        </div>
+                                        <div class="vital-info">
+                                            <span class="vital-label">Blood Pressure</span>
+                                            <div class="bp-values">
+                                                <div class="bp-input-group">
+                                                    <label>Systolic</label>
+                                                    <input type="number" id="systolicBP" min="70" max="250" value="120" class="bp-input">
+                                                </div>
+                                                <span class="bp-divider">/</span>
+                                                <div class="bp-input-group">
+                                                    <label>Diastolic</label>
+                                                    <input type="number" id="diastolicBP" min="40" max="150" value="80" class="bp-input">
+                                                </div>
+                                                <span class="bp-unit">mmHg</span>
+                                            </div>
+                                        </div>
+                                        <div class="bp-chart" id="bpChart">
+                                            <canvas width="80" height="40"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="bp-sliders">
+                                        <div class="bp-slider-group">
+                                            <label>SYS</label>
+                                            <input type="range" id="sbpSlider" min="70" max="250" value="120" class="bp-slider">
+                                        </div>
+                                        <div class="bp-slider-group">
+                                            <label>DIA</label>
+                                            <input type="range" id="dbpSlider" min="40" max="150" value="80" class="bp-slider">
+                                        </div>
+                                    </div>
+                                    <div class="vital-status" id="bpStatus">
+                                        <span class="status-dot normal"></span>
+                                        <span>Normal (120/80 mmHg)</span>
+                                        <span class="status-map">Stage: Optimal</span>
+                                    </div>
+                                </div>
+
+                                <!-- Oxygen & Respiratory -->
+                                <div class="vital-card glass">
+                                    <div class="vital-header">
+                                        <div class="vital-icon">
+                                            <i class="fas fa-lungs"></i>
+                                        </div>
+                                        <div class="vital-info">
+                                            <span class="vital-label">O₂ Saturation</span>
+                                            <span class="vital-value" id="o2Value">98%</span>
+                                        </div>
+                                        <div class="oxygen-wave">
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                            <div class="wave"></div>
+                                        </div>
+                                    </div>
+                                    <input type="range" id="o2Slider" min="70" max="100" value="98" class="vital-slider">
+                                    <div class="vital-status" id="o2Status">
+                                        <span class="status-dot normal"></span>
+                                        <span>Normal</span>
+                                        <span class="status-range">(≥95%)</span>
+                                    </div>
+                                </div>
+
+                                <div class="vital-card glass">
+                                    <div class="vital-header">
+                                        <div class="vital-icon">
+                                            <i class="fas fa-wind"></i>
+                                        </div>
+                                        <div class="vital-info">
+                                            <span class="vital-label">Respiratory Rate</span>
+                                            <span class="vital-value" id="rrValue">16/min</span>
+                                        </div>
+                                    </div>
+                                    <input type="range" id="rrSlider" min="8" max="40" value="16" class="vital-slider">
+                                    <div class="vital-status" id="rrStatus">
+                                        <span class="status-dot normal"></span>
+                                        <span>Normal</span>
+                                        <span class="status-range">(12-20/min)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Symptoms Tab -->
+                        <div class="tab-content" id="symptomsTab">
+                            <div class="symptoms-container">
+                                <div class="symptoms-header">
+                                    <h3>Presenting Symptoms</h3>
+                                    <p>Select all that apply. AI will analyze patterns.</p>
+                                    <button type="button" class="select-all-btn" id="selectAllBtn">
+                                        <i class="fas fa-check-double"></i>
+                                        Select All Common
+                                    </button>
+                                </div>
+                                
+                                <div class="symptoms-grid" id="symptomsGrid">
+                                    <!-- Symptoms will be populated by JavaScript -->
+                                </div>
+                                
+                                <div class="custom-symptom">
+                                    <input type="text" id="customSymptom" placeholder="Add custom symptom...">
+                                    <button type="button" id="addSymptom">
+                                        <i class="fas fa-plus"></i>
+                                        Add
+                                    </button>
+                                </div>
+                                
+                                <div class="symptoms-summary glass">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>Symptom Analysis Ready</strong>
+                                        <span id="selectedSymptomsCount">0 symptoms selected</span>
+                                    </div>
+                                    <div class="severity-slider">
+                                        <label>Symptom Severity</label>
+                                        <input type="range" id="symptomSeverity" min="1" max="5" value="3">
+                                        <div class="severity-labels">
+                                            <span>Mild</span>
+                                            <span>Moderate</span>
+                                            <span>Severe</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medical History Tab -->
+                        <div class="tab-content" id="historyTab">
+                            <div class="history-container" id="historyContainer">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Add these after the existing tabs in the History tab -->
+<div class="tab-content" id="historyTab">
+    <div class="history-container" id="historyContainer">
+        <div class="history-header">
+            <h3><i class="fas fa-history"></i> Patient History Log</h3>
+            <button class="btn-icon" id="clearHistory" title="Clear History">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+        
+        <div class="history-stats glass">
+            <div class="stat-item">
+                <i class="fas fa-database"></i>
+                <div>
+                    <strong id="totalEntries">0</strong>
+                    <span>Total Entries</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-calendar"></i>
+                <div>
+                    <strong id="lastEntry">None</strong>
+                    <span>Last Entry</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-chart-line"></i>
+                <div>
+                    <strong id="avgEntries">0</strong>
+                    <span>Avg/Month</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="history-entries" id="historyEntries">
+            <!-- History entries will load here -->
+            <div class="empty-history">
+                <i class="fas fa-history"></i>
+                <h4>No History Yet</h4>
+                <p>Patient assessments will be saved here automatically</p>
+            </div>
+        </div>
+    </div>
+</div>
+                        <!-- Analyze Section -->
+                        <div class="analyze-section">
+                            <div class="data-summary glass">
+                                <div class="data-points">
+                                    <div class="data-point">
+                                        <i class="fas fa-database"></i>
+                                        <div>
+                                            <strong id="dataPoints">14</strong>
+                                            <span>Parameters</span>
+                                        </div>
+                                    </div>
+                                    <div class="data-point">
+                                        <i class="fas fa-brain"></i>
+                                        <div>
+                                            <strong id="aiConfidence">92%</strong>
+                                            <span>AI Confidence</span>
+                                        </div>
+                                    </div>
+                                    <div class="data-point">
+                                        <i class="fas fa-bolt"></i>
+                                        <div>
+                                            <strong>< 3s</strong>
+                                            <span>Processing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="analyzeBtn" class="analyze-btn glass">
+                                <div class="btn-content">
+                                    <i class="fas fa-brain-circuit"></i>
+                                    <span>Initiate AI Clinical Analysis</span>
+                                    <div class="btn-glow"></div>
+                                </div>
+                                <div class="loader" id="loader">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </button>
+                            <div class="disclaimer glass">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Clinical Decision Support</strong>
+                                    <span>AI-generated insights require physician verification. Not for diagnostic use.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- AI Results Section -->
+                <section class="card results-card glass">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="title-icon">
+                                <i class="fas fa-chart-network"></i>
+                                <div class="title-glow"></div>
+                            </div>
+                            <div>
+                                <h2>AI Clinical Intelligence</h2>
+                                <p class="card-subtitle">Real-time diagnosis & evidence-based reports</p>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" id="exportReport" title="Export PDF">
+                                <i class="fas fa-file-pdf"></i>
+                            </button>
+                            <button class="btn-icon" id="shareReport" title="Share">
+                                <i class="fas fa-share-nodes"></i>
+                            </button>
+                            <button class="btn-icon" id="printReport" title="Print">
+                                <i class="fas fa-print"></i>
+                            </button>
+                            <button class="btn-icon" id="refreshReport" title="Refresh">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Container -->
+                    <div class="results-container">
+                        <!-- Report Tabs -->
+                        <div class="report-tabs">
+                            <button class="report-tab active" data-report="diagnosis">
+                                <i class="fas fa-diagnoses"></i>
+                                Diagnosis
+                                <div class="tab-indicator"></div>
+                            </button>
+                            <button class="report-tab" data-report="clinical">
+                                <i class="fas fa-file-medical"></i>
+                                Clinical Notes
+                                <div class="tab-indicator"></div>
+                            </button>
+                            <button class="report-tab" data-report="treatment">
+                                <i class="fas fa-prescription"></i>
+                                Treatment Plan
+                                <div class="tab-indicator"></div>
+                            </button>
+                            <button class="report-tab" data-report="patient">
+                                <i class="fas fa-user-circle"></i>
+                                Patient Summary
+                                <div class="tab-indicator"></div>
+                            </button>
+                            <button class="report-tab" data-report="risk">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Risk Analysis
+                                <div class="tab-indicator"></div>
+                            </button>
+                        </div>
+                        
+                        <!-- Report Content -->
+                        <div class="report-content">
+                            <!-- Initial State -->
+                            <div class="initial-state active" id="initialState">
+                                <div class="empty-state">
+                                    <div class="empty-icon">
+                                        <div class="neural-network">
+                                            <div class="node"></div>
+                                            <div class="node"></div>
+                                            <div class="node"></div>
+                                            <div class="connection"></div>
+                                            <div class="connection"></div>
+                                            <div class="connection"></div>
+                                        </div>
+                                    </div>
+                                    <h3>Ready for Clinical Analysis</h3>
+                                    <p>Enter comprehensive patient data and initiate AI analysis to generate detailed clinical insights.</p>
+                                    <div class="empty-features">
+                                        <div class="feature">
+                                            <i class="fas fa-robot"></i>
+                                            <div>
+                                                <strong>Neural AI Diagnosis</strong>
+                                                <span>Multi-model differential analysis</span>
+                                            </div>
+                                        </div>
+                                        <div class="feature">
+                                            <i class="fas fa-file-waveform"></i>
+                                            <div>
+                                                <strong>Automated Documentation</strong>
+                                                <span>SOAP notes & clinical summaries</span>
+                                            </div>
+                                        </div>
+                                        <div class="feature">
+                                            <i class="fas fa-prescription-bottle"></i>
+                                            <div>
+                                                <strong>Evidence-Based Plans</strong>
+                                                <span>Latest clinical guidelines</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Diagnosis Report -->
+                            <div class="report-section" id="diagnosisReport">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <!-- Clinical Notes Report -->
+                            <div class="report-section" id="clinicalReport">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <!-- Treatment Plan Report -->
+                            <div class="report-section" id="treatmentReport">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <!-- Patient Summary Report -->
+                            <div class="report-section" id="patientReport">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <!-- Risk Analysis Report -->
+                            <div class="report-section" id="riskReport">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                            
+                            <!-- Loading State -->
+                            <div class="loading-state" id="loadingState">
+                                <div class="neural-loader">
+                                    <div class="layer"></div>
+                                    <div class="layer"></div>
+                                    <div class="layer"></div>
+                                    <div class="core"></div>
+                                </div>
+                                <h3>Analyzing Clinical Data</h3>
+                                <p>Processing comprehensive patient assessment with multi-model AI...</p>
+                                <div class="processing-steps">
+                                    <div class="step active">
+                                        <i class="fas fa-check"></i>
+                                        <div>
+                                            <strong>Data Validation</strong>
+                                            <span>Checking clinical parameters</span>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <div>
+                                            <strong>ML Model Analysis</strong>
+                                            <span>Running neural networks</span>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <i class="far fa-clock"></i>
+                                        <div>
+                                            <strong>Gen AI Synthesis</strong>
+                                            <span>Generating insights</span>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <i class="far fa-clock"></i>
+                                        <div>
+                                            <strong>Evidence Review</strong>
+                                            <span>Checking guidelines</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="analysisProgress"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Error State -->
+                            <div class="error-state" id="errorState">
+                                <div class="error-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3>Analysis Failed</h3>
+                                <p id="errorMessage">Unable to process clinical data. Please check input and try again.</p>
+                                <button class="retry-btn" id="retryBtn">
+                                    <i class="fas fa-redo"></i>
+                                    Retry Analysis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- System Status & Monitor -->
+                <section class="card status-card glass">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="title-icon">
+                                <i class="fas fa-server"></i>
+                                <div class="title-glow"></div>
+                            </div>
+                            <div>
+                                <h3>System Monitor</h3>
+                                <p class="card-subtitle">Real-time system & AI performance</p>
+                            </div>
+                        </div>
+                        <button class="btn-icon" id="expandMonitor">
+                            <i class="fas fa-expand-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="monitor-grid">
+                        <div class="monitor-item">
+                            <div class="monitor-header">
+                                <div class="monitor-icon success">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="monitor-info">
+                                    <span class="monitor-label">AI Model</span>
+                                    <span class="monitor-value">Neural v4.2</span>
+                                </div>
+                            </div>
+                            <div class="monitor-chart">
+                                <canvas id="aiModelChart" width="100" height="40"></canvas>
+                            </div>
+                            <div class="monitor-status">
+                                <span class="status-dot success"></span>
+                                <span>Active Learning</span>
+                            </div>
+                        </div>
+                        
+                        <div class="monitor-item">
+                            <div class="monitor-header">
+                                <div class="monitor-icon" id="genAiIcon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="monitor-info">
+                                    <span class="monitor-label">Gen AI</span>
+                                    <span class="monitor-value" id="genAiStatus">Checking...</span>
+                                </div>
+                            </div>
+                            <div class="monitor-load">
+                                <div class="load-bar">
+                                    <div class="load-fill" id="genAiLoad"></div>
+                                </div>
+                                <span class="load-value" id="genAiLoadValue">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="monitor-item">
+                            <div class="monitor-header">
+                                <div class="monitor-icon success">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="monitor-info">
+                                    <span class="monitor-label">Security</span>
+                                    <span class="monitor-value">HIPAA Level 3</span>
+                                </div>
+                            </div>
+                            <div class="monitor-badges">
+                                <span class="badge">Encrypted</span>
+                                <span class="badge">Audit Log</span>
+                                <span class="badge">Access Control</span>
+                            </div>
+                        </div>
+                        
+                        <div class="monitor-item">
+                            <div class="monitor-header">
+                                <div class="monitor-icon success">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="monitor-info">
+                                    <span class="monitor-label">Performance</span>
+                                    <span class="monitor-value">< 3s Response</span>
+                                </div>
+                            </div>
+                            <div class="latency-display">
+                                <div class="latency-bar">
+                                    <div class="latency-fill" style="width: 80%"></div>
+                                </div>
+                                <span class="latency-value">2.3s avg</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="api-status" id="apiStatus">
+                        <div class="status-pulse"></div>
+                        <span>Connecting to clinical databases...</span>
+                        <div class="status-graph">
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                            <div class="graph-bar"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- AI Assistant Chat -->
+            <div class="ai-assistant glass" id="aiAssistant">
+                <div class="assistant-header">
+                    <div class="assistant-avatar">
+                        <i class="fas fa-robot"></i>
+                        <div class="assistant-pulse"></div>
+                    </div>
+                    <div class="assistant-info">
+                        <h4>MediPatient AI Assistant</h4>
+                        <span>Clinical Decision Support</span>
+                    </div>
+                    <button class="assistant-toggle" id="assistantToggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="assistant-body" id="assistantBody">
+                    <div class="assistant-messages">
+                        <div class="message ai">
+                            <div class="message-content">
+                                <strong>Hello Doctor!</strong>
+                                <p>I can help analyze clinical data, suggest differentials, and provide evidence-based recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="assistant-input">
+                        <input type="text" placeholder="Ask about symptoms, treatments, or guidelines..." id="aiQuery">
+                        <button id="sendQuery">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals and Overlays -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <!-- Test Cases Panel -->
+    <div class="test-cases-panel glass" id="testCasesPanel">
+        <div class="panel-header">
+            <h3><i class="fas fa-vial"></i> Clinical Test Scenarios</h3>
+            <button class="close-panel" id="closePanel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="test-cases-grid" id="testCasesGrid">
+            <!-- Test cases will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Notifications Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Quick Actions Bar -->
+    <div class="quick-actions glass">
+        <button class="quick-action" id="quickStats" title="Quick Stats">
+            <i class="fas fa-chart-bar"></i>
+        </button>
+        <button class="quick-action" id="quickLab" title="Order Labs">
+            <i class="fas fa-flask"></i>
+        </button>
+        <button class="quick-action" id="quickMed" title="Prescribe">
+            <i class="fas fa-pills"></i>
+        </button>
+        <button class="quick-action" id="quickScan" title="Scan Image">
+            <i class="fas fa-x-ray"></i>
+        </button>
+        <button class="quick-action" id="quickRecord" title="Voice Record">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+
+    
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Main Application Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <script src="static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "model_name": "MediPatient Diagnosis AI",
+  "version": "2.0",
+  "export_date": "2025-12-12 10:57:24.627560",
+  "accuracy_disease": 0.9956773315180395,
+  "accuracy_infectious": 1.0,
+  "feature_count": 40,
+  "classes": [
+    "cardiovascular",
+    "gastrointestinal",
+    "infectious",
+    "injury",
+    "other",
+    "respiratory"
+  ],
+  "required_features": [
+    "temperature",
+    "heartrate",
+    "resprate",
+    "o2sat",
+    "sbp",
+    "dbp",
+    "acuity",
+    "seq_num",
+    "icd_version",
+    "gsn"
+  ]
+}

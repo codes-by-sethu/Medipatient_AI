@@ -1,0 +1,416 @@
+2025-12-12 15:44:34,706 - __main__ - INFO - Loading data...
+2025-12-12 15:44:34,707 - __main__ - INFO - Loading merged file: merged_features.csv
+2025-12-12 15:44:36,065 - __main__ - INFO - Data types: {dtype('float64'): 42, dtype('O'): 36, dtype('bool'): 14, dtype('int64'): 6}
+2025-12-12 15:44:36,065 - __main__ - INFO - Successfully loaded data: (167166, 98)
+2025-12-12 15:44:36,068 - __main__ - INFO - Memory usage: 109.36 MB
+2025-12-12 15:44:36,344 - __main__ - INFO - Preprocessing data...
+2025-12-12 15:44:36,483 - __main__ - INFO - Removing 31 columns with >70.0% missing values
+2025-12-12 15:44:37,569 - __main__ - INFO - Using diagnosis column: icd_code
+2025-12-12 15:44:37,817 - __main__ - INFO - Preprocessed data shape: (167166, 30)
+2025-12-12 15:44:37,823 - __main__ - INFO - Target distribution: {'other': 138069, 'cardiovascular': 14196, 'injury_poisoning': 6501, 'gastrointestinal': 3203, 'respiratory': 2492, 'neoplasms': 1925, 'infectious': 780}
+2025-12-12 15:44:37,839 - __main__ - INFO - Training models...
+2025-12-12 15:44:37,922 - __main__ - INFO - Training set: (133732, 30)
+2025-12-12 15:44:37,922 - __main__ - INFO - Test set: (33434, 30)
+2025-12-12 15:44:37,923 - __main__ - INFO - Training Random Forest classifier...
+2025-12-12 15:44:40,995 - __main__ - INFO - Performing cross-validation...
+2025-12-12 15:45:22,413 - __main__ - INFO - Training binary model for infectious disease detection...
+2025-12-12 15:45:22,415 - __main__ - INFO - Binary class distribution: {0: 166386, 1: 780}
+2025-12-12 15:45:24,194 - __main__ - INFO - Generating reports...
+2025-12-12 16:36:01,984 - INFO - Starting AI Diagnosis System
+2025-12-12 16:36:01,984 - ERROR - Data directory not found: B:\PI2\data
+2025-12-12 16:36:01,985 - INFO - Please ensure the data directory exists with the required files.
+2025-12-12 16:40:25,126 - INFO - ============================================================
+2025-12-12 16:40:25,127 - INFO - STARTING AI DIAGNOSIS SYSTEM
+2025-12-12 16:40:25,127 - INFO - ============================================================
+2025-12-12 16:40:25,127 - INFO - Data directory: C:\Users\SETHULAKSHMI K B\PI2\data
+2025-12-12 16:40:25,127 - INFO - Data file: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:40:25,127 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:40:25,128 - INFO - 
+============================================================
+2025-12-12 16:40:25,128 - INFO - STEP 1: LOADING DATA
+2025-12-12 16:40:25,128 - INFO - ============================================================
+2025-12-12 16:40:25,128 - INFO - Attempting to load data from: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:40:25,128 - INFO - File size: 77.96 MB
+2025-12-12 16:40:25,129 - INFO - Loading data (this may take a moment for large files)...
+2025-12-12 16:40:26,603 - INFO - Successfully loaded data: 167,166 rows × 78 columns
+2025-12-12 16:40:27,437 - INFO - Memory usage: 344.36 MB
+2025-12-12 16:40:27,437 - INFO - Dataset dimensions: 167,166 rows × 78 columns
+2025-12-12 16:40:27,438 - INFO - 
+============================================================
+2025-12-12 16:40:27,438 - INFO - STEP 2: CLEANING DATA
+2025-12-12 16:40:27,438 - INFO - ============================================================
+2025-12-12 16:40:27,438 - INFO - Starting data cleaning pipeline
+2025-12-12 16:40:27,601 - INFO - Dropping 33 columns with >50.0% missing values
+2025-12-12 16:40:27,647 - INFO - Unavailable clinical columns: ['spo2', 'map', 'age', 'wbc', 'diagnosis', 'ethnicity', 'unit', 'icd9_code', 'icd10_code', 'los_hours', 'bp', 'temp', 'glucose', 'los', 'admission_id', 'patient_id', 'sex', 'potassium', 'rr', 'hr']...
+2025-12-12 16:40:27,648 - INFO - Selected 16 clinical features from 40 possible
+2025-12-12 16:40:27,683 - INFO - Removed 166736 duplicate records using ['stay_id', 'subject_id']
+2025-12-12 16:40:27,686 - INFO - Handling missing values...
+2025-12-12 16:40:27,689 - INFO - Imputing 9 numeric columns with median
+2025-12-12 16:40:27,693 - INFO - Imputing 4 categorical columns with mode
+2025-12-12 16:40:27,696 - WARNING - Still have 209 missing values after imputation
+2025-12-12 16:40:27,697 - WARNING -   icd_code: 209 missing values
+2025-12-12 16:40:27,698 - INFO - Cleaning complete. Final shape: (430, 16)
+2025-12-12 16:40:27,698 - INFO - 
+============================================================
+2025-12-12 16:40:27,699 - INFO - STEP 3: ENGINEERING FEATURES
+2025-12-12 16:40:27,699 - INFO - ============================================================
+2025-12-12 16:40:27,699 - INFO - Engineering features
+2025-12-12 16:40:27,699 - INFO - Using icd_code for diagnosis mapping
+2025-12-12 16:40:27,702 - INFO - Created temperature features from temperature
+2025-12-12 16:40:27,703 - INFO - Created heart rate features from heartrate
+2025-12-12 16:40:27,704 - INFO - Created BP features from sbp
+2025-12-12 16:40:27,704 - INFO - Created oxygen features from o2sat
+2025-12-12 16:40:27,708 - INFO - Created age groups from anchor_age
+2025-12-12 16:40:27,708 - INFO - 
+============================================================
+2025-12-12 16:40:27,709 - INFO - STEP 4: TRAINING MODELS
+2025-12-12 16:40:27,709 - INFO - ============================================================
+2025-12-12 16:40:27,709 - INFO - Preparing features for modeling
+2025-12-12 16:40:27,711 - INFO - Encoding 5 categorical columns
+2025-12-12 16:40:27,715 - INFO - Feature matrix shape: (430, 51)
+2025-12-12 16:40:27,716 - INFO - Target distribution:
+2025-12-12 16:40:27,716 - INFO -   Disease categories: {'unknown': np.int64(209), 'other': np.int64(164), 'cardiovascular': np.int64(33), 'respiratory': np.int64(9), 'gastrointestinal': np.int64(6)}
+2025-12-12 16:40:27,717 - INFO -   Infectious prevalence: 1.16%
+2025-12-12 16:40:27,717 - INFO - Training models
+2025-12-12 16:40:27,726 - INFO - Training disease category model...
+2025-12-12 16:40:27,907 - INFO - Disease model accuracy: 0.767
+2025-12-12 16:40:27,911 - INFO - Training infectious disease model...
+2025-12-12 16:40:28,082 - INFO - Infectious model accuracy: 0.942
+2025-12-12 16:40:28,085 - INFO - 
+============================================================
+2025-12-12 16:40:28,086 - INFO - STEP 5: FEATURE IMPORTANCE ANALYSIS
+2025-12-12 16:40:28,086 - INFO - ============================================================
+2025-12-12 16:40:28,087 - INFO - Analyzing feature importance
+2025-12-12 16:40:28,126 - INFO - Top 10 features for disease prediction:
+2025-12-12 16:40:28,248 - INFO - Top 10 features for infectious disease detection:
+2025-12-12 16:40:28,285 - INFO - 
+============================================================
+2025-12-12 16:40:28,285 - INFO - STEP 6: SAVING ARTIFACTS
+2025-12-12 16:40:28,286 - INFO - ============================================================
+2025-12-12 16:40:28,286 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:40:28,313 - INFO - Saved disease_model to C:\Users\SETHULAKSHMI K B\PI2\output\disease_model.pkl
+2025-12-12 16:40:28,333 - INFO - Saved infectious_model to C:\Users\SETHULAKSHMI K B\PI2\output\infectious_model.pkl
+2025-12-12 16:40:28,339 - INFO - Saved 51 feature names to C:\Users\SETHULAKSHMI K B\PI2\output\feature_names.csv
+2025-12-12 16:40:28,341 - INFO - Saved metrics to C:\Users\SETHULAKSHMI K B\PI2\output\model_metrics.txt
+2025-12-12 16:40:28,496 - INFO - Saved feature importance to C:\Users\SETHULAKSHMI K B\PI2\output\feature_importance.csv
+2025-12-12 16:40:28,500 - INFO - 
+============================================================
+2025-12-12 16:40:28,500 - INFO - DEPLOYMENT SUMMARY
+2025-12-12 16:40:28,501 - INFO - ============================================================
+2025-12-12 16:40:28,501 - INFO - Input data: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:40:28,502 - INFO - Initial shape: (167166, 78)
+2025-12-12 16:40:28,502 - INFO - Final shape: (430, 24)
+2025-12-12 16:40:28,503 - INFO - Features used: 51
+2025-12-12 16:40:28,503 - INFO - disease_model: Accuracy = 0.7674
+2025-12-12 16:40:28,503 - INFO - infectious_model: Accuracy = 0.9419
+2025-12-12 16:40:28,504 - INFO - Artifacts saved to: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:40:28,505 - INFO - ============================================================
+2025-12-12 16:40:28,505 - INFO - DEPLOYMENT COMPLETE
+2025-12-12 16:40:28,506 - INFO - ============================================================
+2025-12-12 16:42:37,468 - INFO - ============================================================
+2025-12-12 16:42:37,468 - INFO - STARTING AI DIAGNOSIS SYSTEM
+2025-12-12 16:42:37,469 - INFO - ============================================================
+2025-12-12 16:42:37,469 - INFO - Data directory: C:\Users\SETHULAKSHMI K B\PI2\data
+2025-12-12 16:42:37,469 - INFO - Data file: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:42:37,469 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:42:37,470 - INFO - 
+============================================================
+2025-12-12 16:42:37,470 - INFO - STEP 1: LOADING DATA
+2025-12-12 16:42:37,470 - INFO - ============================================================
+2025-12-12 16:42:37,470 - INFO - Attempting to load data from: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:42:37,471 - INFO - File size: 77.96 MB
+2025-12-12 16:42:37,471 - INFO - Loading data (this may take a moment for large files)...
+2025-12-12 16:42:38,813 - INFO - Successfully loaded data: 167,166 rows × 78 columns
+2025-12-12 16:42:39,662 - INFO - Memory usage: 344.36 MB
+2025-12-12 16:42:39,662 - INFO - Dataset dimensions: 167,166 rows × 78 columns
+2025-12-12 16:42:39,662 - INFO - 
+============================================================
+2025-12-12 16:42:39,663 - INFO - STEP 2: CLEANING DATA
+2025-12-12 16:42:39,663 - INFO - ============================================================
+2025-12-12 16:42:39,663 - INFO - Starting data cleaning pipeline
+2025-12-12 16:42:39,819 - INFO - Dropping 33 columns with >50.0% missing values
+2025-12-12 16:42:39,867 - INFO - Unavailable clinical columns: ['dischtime', 'sodium', 'glucose', 'spo2', 'rr', 'temp', 'hr', 'diagnosis', 'potassium', 'los', 'admittime', 'icd10_code', 'age', 'icd9_code', 'unit', 'los_hours', 'creatinine', 'patient_id', 'sex', 'bp']...
+2025-12-12 16:42:39,867 - INFO - Selected 16 clinical features from 40 possible
+2025-12-12 16:42:39,899 - INFO - Removed 166736 duplicate records using ['stay_id', 'subject_id']
+2025-12-12 16:42:39,902 - INFO - Handling missing values...
+2025-12-12 16:42:39,903 - INFO - Imputing 9 numeric columns with median
+2025-12-12 16:42:39,906 - INFO - Imputing 4 categorical columns with mode
+2025-12-12 16:42:39,909 - WARNING - Still have 209 missing values after imputation
+2025-12-12 16:42:39,910 - WARNING -   icd_code: 209 missing values
+2025-12-12 16:42:39,910 - INFO - Cleaning complete. Final shape: (430, 16)
+2025-12-12 16:42:39,911 - INFO - 
+============================================================
+2025-12-12 16:42:39,911 - INFO - STEP 3: ENGINEERING FEATURES
+2025-12-12 16:42:39,911 - INFO - ============================================================
+2025-12-12 16:42:39,912 - INFO - Engineering features
+2025-12-12 16:42:39,912 - INFO - Using icd_code for diagnosis mapping
+2025-12-12 16:42:39,915 - INFO - Created temperature features from temperature
+2025-12-12 16:42:39,916 - INFO - Created heart rate features from heartrate
+2025-12-12 16:42:39,918 - INFO - Created BP features from sbp
+2025-12-12 16:42:39,918 - INFO - Created oxygen features from o2sat
+2025-12-12 16:42:39,919 - INFO - Created age groups from anchor_age
+2025-12-12 16:42:39,920 - INFO - 
+============================================================
+2025-12-12 16:42:39,920 - INFO - STEP 4: TRAINING MODELS
+2025-12-12 16:42:39,920 - INFO - ============================================================
+2025-12-12 16:42:39,921 - INFO - Preparing features for modeling
+2025-12-12 16:42:39,923 - INFO - Encoding 5 categorical columns
+2025-12-12 16:42:39,925 - INFO - Feature matrix shape: (430, 51)
+2025-12-12 16:42:39,926 - INFO - Target distribution:
+2025-12-12 16:42:39,927 - INFO -   Disease categories: {'unknown': np.int64(209), 'other': np.int64(164), 'cardiovascular': np.int64(33), 'respiratory': np.int64(9), 'gastrointestinal': np.int64(6)}
+2025-12-12 16:42:39,927 - INFO -   Infectious prevalence: 1.16%
+2025-12-12 16:42:39,927 - INFO - Training models
+2025-12-12 16:42:39,934 - INFO - Training disease category model...
+2025-12-12 16:42:40,106 - INFO - Disease model accuracy: 0.767
+2025-12-12 16:42:40,110 - INFO - Training infectious disease model...
+2025-12-12 16:42:40,283 - INFO - Infectious model accuracy: 0.942
+2025-12-12 16:42:40,287 - INFO - 
+============================================================
+2025-12-12 16:42:40,288 - INFO - STEP 5: FEATURE IMPORTANCE ANALYSIS
+2025-12-12 16:42:40,288 - INFO - ============================================================
+2025-12-12 16:42:40,288 - INFO - Analyzing feature importance
+2025-12-12 16:42:40,323 - INFO - Top 10 features for disease prediction:
+2025-12-12 16:42:40,387 - INFO - Top 10 features for infectious disease detection:
+2025-12-12 16:42:40,414 - INFO - 
+============================================================
+2025-12-12 16:42:40,414 - INFO - STEP 6: SAVING ARTIFACTS
+2025-12-12 16:42:40,415 - INFO - ============================================================
+2025-12-12 16:42:40,416 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:42:40,442 - INFO - Saved disease_model to C:\Users\SETHULAKSHMI K B\PI2\output\disease_model.pkl
+2025-12-12 16:42:40,463 - INFO - Saved infectious_model to C:\Users\SETHULAKSHMI K B\PI2\output\infectious_model.pkl
+2025-12-12 16:42:40,466 - INFO - Saved 51 feature names to C:\Users\SETHULAKSHMI K B\PI2\output\feature_names.csv
+2025-12-12 16:42:40,467 - INFO - Saved metrics to C:\Users\SETHULAKSHMI K B\PI2\output\model_metrics.txt
+2025-12-12 16:42:40,602 - INFO - Saved feature importance to C:\Users\SETHULAKSHMI K B\PI2\output\feature_importance.csv
+2025-12-12 16:42:40,603 - INFO -  Deployment artifacts saved successfully
+2025-12-12 16:42:40,603 - INFO - 
+============================================================
+2025-12-12 16:42:40,603 - INFO - DEPLOYMENT SUMMARY
+2025-12-12 16:42:40,603 - INFO - ============================================================
+2025-12-12 16:42:40,603 - INFO - Input data: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:42:40,604 - INFO - Initial shape: (167166, 78)
+2025-12-12 16:42:40,604 - INFO - Final shape: (430, 24)
+2025-12-12 16:42:40,604 - INFO - Features used: 51
+2025-12-12 16:42:40,604 - INFO - disease_model: Accuracy = 0.7674
+2025-12-12 16:42:40,604 - INFO - infectious_model: Accuracy = 0.9419
+2025-12-12 16:42:40,605 - INFO - Artifacts saved to: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:42:40,605 - INFO - ============================================================
+2025-12-12 16:42:40,605 - INFO - DEPLOYMENT COMPLETE
+2025-12-12 16:42:40,606 - INFO - ============================================================
+2025-12-12 16:44:32,796 - INFO - ============================================================
+2025-12-12 16:44:32,796 - INFO - STARTING AI DIAGNOSIS SYSTEM
+2025-12-12 16:44:32,796 - INFO - ============================================================
+2025-12-12 16:44:32,797 - INFO - Data directory: C:\Users\SETHULAKSHMI K B\PI2\data
+2025-12-12 16:44:32,797 - INFO - Data file: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:44:32,797 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:44:32,798 - INFO - 
+============================================================
+2025-12-12 16:44:32,798 - INFO - STEP 1: LOADING DATA
+2025-12-12 16:44:32,798 - INFO - ============================================================
+2025-12-12 16:44:32,798 - INFO - Attempting to load data from: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:44:32,799 - INFO - File size: 77.96 MB
+2025-12-12 16:44:32,799 - INFO - Loading data (this may take a moment for large files)...
+2025-12-12 16:44:34,253 - INFO - Successfully loaded data: 167,166 rows × 78 columns
+2025-12-12 16:44:35,177 - INFO - Memory usage: 344.36 MB
+2025-12-12 16:44:35,178 - INFO - Dataset dimensions: 167,166 rows × 78 columns
+2025-12-12 16:44:35,178 - INFO - 
+============================================================
+2025-12-12 16:44:35,179 - INFO - STEP 2: CLEANING DATA
+2025-12-12 16:44:35,179 - INFO - ============================================================
+2025-12-12 16:44:35,179 - INFO - Starting data cleaning pipeline
+2025-12-12 16:44:35,360 - INFO - Dropping 33 columns with >50.0% missing values
+2025-12-12 16:44:35,402 - INFO - Unavailable clinical columns: ['icd9_code', 'creatinine', 'admittime', 'spo2', 'admission_id', 'temp', 'potassium', 'rr', 'patient_id', 'diagnosis', 'los', 'glucose', 'map', 'bp', 'los_hours', 'icd10_code', 'dischtime', 'wbc', 'hr', 'sex']...
+2025-12-12 16:44:35,402 - INFO - Selected 16 clinical features from 40 possible
+2025-12-12 16:44:35,428 - INFO - Removed 166736 duplicate records using ['stay_id', 'subject_id']
+2025-12-12 16:44:35,431 - INFO - Handling missing values...
+2025-12-12 16:44:35,432 - INFO - Imputing 9 numeric columns with median
+2025-12-12 16:44:35,434 - INFO - Imputing 4 categorical columns with mode
+2025-12-12 16:44:35,437 - WARNING - Still have 209 missing values after imputation
+2025-12-12 16:44:35,439 - WARNING -   icd_code: 209 missing values
+2025-12-12 16:44:35,439 - INFO - Cleaning complete. Final shape: (430, 16)
+2025-12-12 16:44:35,439 - INFO - 
+============================================================
+2025-12-12 16:44:35,439 - INFO - STEP 3: ENGINEERING FEATURES
+2025-12-12 16:44:35,440 - INFO - ============================================================
+2025-12-12 16:44:35,440 - INFO - Engineering features
+2025-12-12 16:44:35,440 - INFO - Using icd_code for diagnosis mapping
+2025-12-12 16:44:35,443 - INFO - Created temperature features from temperature
+2025-12-12 16:44:35,444 - INFO - Created heart rate features from heartrate
+2025-12-12 16:44:35,445 - INFO - Created BP features from sbp
+2025-12-12 16:44:35,445 - INFO - Created oxygen features from o2sat
+2025-12-12 16:44:35,446 - INFO - Created age groups from anchor_age
+2025-12-12 16:44:35,447 - INFO - 
+============================================================
+2025-12-12 16:44:35,447 - INFO - STEP 4: TRAINING MODELS
+2025-12-12 16:44:35,447 - INFO - ============================================================
+2025-12-12 16:44:35,447 - INFO - Preparing features for modeling
+2025-12-12 16:44:35,448 - INFO - Encoding 5 categorical columns
+2025-12-12 16:44:35,451 - INFO - Feature matrix shape: (430, 51)
+2025-12-12 16:44:35,451 - INFO - Target distribution:
+2025-12-12 16:44:35,452 - INFO -   Disease categories: {'unknown': np.int64(209), 'other': np.int64(164), 'cardiovascular': np.int64(33), 'respiratory': np.int64(9), 'gastrointestinal': np.int64(6)}
+2025-12-12 16:44:35,452 - INFO -   Infectious prevalence: 1.16%
+2025-12-12 16:44:35,453 - INFO - Training models
+2025-12-12 16:44:35,457 - INFO - Training disease category model...
+2025-12-12 16:44:35,634 - INFO - Disease model accuracy: 0.767
+2025-12-12 16:44:35,638 - INFO - Training infectious disease model...
+2025-12-12 16:44:35,811 - INFO - Infectious model accuracy: 0.942
+2025-12-12 16:44:35,815 - INFO - 
+============================================================
+2025-12-12 16:44:35,815 - INFO - STEP 5: FEATURE IMPORTANCE ANALYSIS
+2025-12-12 16:44:35,816 - INFO - ============================================================
+2025-12-12 16:44:35,816 - INFO - Analyzing feature importance
+2025-12-12 16:44:35,869 - INFO - Top 10 features for disease prediction:
+2025-12-12 16:44:35,870 - INFO -   sbp                                      -> 0.1252
+2025-12-12 16:44:35,871 - INFO -   heartrate                                -> 0.1143
+2025-12-12 16:44:35,871 - INFO -   anchor_age                               -> 0.1046
+2025-12-12 16:44:35,872 - INFO -   resprate                                 -> 0.0894
+2025-12-12 16:44:35,872 - INFO -   dbp                                      -> 0.0835
+2025-12-12 16:44:35,873 - INFO -   temperature                              -> 0.0795
+2025-12-12 16:44:35,873 - INFO -   o2sat                                    -> 0.0678
+2025-12-12 16:44:35,874 - INFO -   gender_M                                 -> 0.0637
+2025-12-12 16:44:35,874 - INFO -   race_WHITE                               -> 0.0492
+2025-12-12 16:44:35,875 - INFO -   acuity                                   -> 0.0446
+2025-12-12 16:44:35,918 - INFO - Top 10 features for infectious disease detection:
+2025-12-12 16:44:35,919 - INFO -   anchor_age                               -> 0.3842
+2025-12-12 16:44:35,919 - INFO -   sbp                                      -> 0.0861
+2025-12-12 16:44:35,919 - INFO -   resprate                                 -> 0.0519
+2025-12-12 16:44:35,920 - INFO -   dbp                                      -> 0.0496
+2025-12-12 16:44:35,920 - INFO -   race_PORTUGUESE                          -> 0.0474
+2025-12-12 16:44:35,921 - INFO -   heartrate                                -> 0.0456
+2025-12-12 16:44:35,922 - INFO -   temperature                              -> 0.0437
+2025-12-12 16:44:35,922 - INFO -   race_WHITE                               -> 0.0427
+2025-12-12 16:44:35,922 - INFO -   age_group_elderly                        -> 0.0399
+2025-12-12 16:44:35,923 - INFO -   o2sat                                    -> 0.0358
+2025-12-12 16:44:35,924 - INFO - 
+============================================================
+2025-12-12 16:44:35,924 - INFO - STEP 6: SAVING ARTIFACTS
+2025-12-12 16:44:35,925 - INFO - ============================================================
+2025-12-12 16:44:35,925 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:44:35,949 - INFO - Saved disease_model to C:\Users\SETHULAKSHMI K B\PI2\output\disease_model.pkl
+2025-12-12 16:44:35,967 - INFO - Saved infectious_model to C:\Users\SETHULAKSHMI K B\PI2\output\infectious_model.pkl
+2025-12-12 16:44:35,970 - INFO - Saved 51 feature names to C:\Users\SETHULAKSHMI K B\PI2\output\feature_names.csv
+2025-12-12 16:44:35,972 - INFO - Saved metrics to C:\Users\SETHULAKSHMI K B\PI2\output\model_metrics.txt
+2025-12-12 16:44:36,178 - INFO - Saved feature importance to C:\Users\SETHULAKSHMI K B\PI2\output\feature_importance.csv
+2025-12-12 16:44:36,179 - INFO -  Deployment artifacts saved successfully
+2025-12-12 16:44:36,180 - INFO - 
+============================================================
+2025-12-12 16:44:36,180 - INFO - DEPLOYMENT SUMMARY
+2025-12-12 16:44:36,181 - INFO - ============================================================
+2025-12-12 16:44:36,181 - INFO - Input data: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 16:44:36,181 - INFO - Initial shape: (167166, 78)
+2025-12-12 16:44:36,182 - INFO - Final shape: (430, 24)
+2025-12-12 16:44:36,182 - INFO - Features used: 51
+2025-12-12 16:44:36,183 - INFO - disease_model: Accuracy = 0.7674
+2025-12-12 16:44:36,183 - INFO - infectious_model: Accuracy = 0.9419
+2025-12-12 16:44:36,184 - INFO - Artifacts saved to: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 16:44:36,184 - INFO - ============================================================
+2025-12-12 16:44:36,185 - INFO - DEPLOYMENT COMPLETE
+2025-12-12 16:44:36,185 - INFO - ============================================================
+2025-12-12 19:16:11,755 - INFO - ============================================================
+2025-12-12 19:16:11,756 - INFO - STARTING AI DIAGNOSIS SYSTEM
+2025-12-12 19:16:11,756 - INFO - ============================================================
+2025-12-12 19:16:11,757 - INFO - Data directory: C:\Users\SETHULAKSHMI K B\PI2\data
+2025-12-12 19:16:11,757 - INFO - Data file: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 19:16:11,757 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 19:16:11,757 - INFO - 
+============================================================
+2025-12-12 19:16:11,757 - INFO - STEP 1: LOADING DATA
+2025-12-12 19:16:11,758 - INFO - ============================================================
+2025-12-12 19:16:11,758 - INFO - Attempting to load data from: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 19:16:11,758 - INFO - File size: 77.96 MB
+2025-12-12 19:16:11,759 - INFO - Loading data (this may take a moment for large files)...
+2025-12-12 19:16:12,981 - INFO - Successfully loaded data: 167,166 rows × 78 columns
+2025-12-12 19:16:13,824 - INFO - Memory usage: 344.36 MB
+2025-12-12 19:16:13,825 - INFO - Dataset dimensions: 167,166 rows × 78 columns
+2025-12-12 19:16:13,826 - INFO - 
+============================================================
+2025-12-12 19:16:13,826 - INFO - STEP 2: CLEANING DATA
+2025-12-12 19:16:13,826 - INFO - ============================================================
+2025-12-12 19:16:13,827 - INFO - Starting data cleaning pipeline
+2025-12-12 19:16:13,996 - INFO - Dropping 33 columns with >50.0% missing values
+2025-12-12 19:16:14,039 - INFO - Unavailable clinical columns: ['creatinine', 'temp', 'sex', 'rr', 'icd9_code', 'age', 'hr', 'potassium', 'diagnosis', 'admission_id', 'los', 'unit', 'admittime', 'los_hours', 'patient_id', 'sodium', 'map', 'dischtime', 'spo2', 'ethnicity']...
+2025-12-12 19:16:14,039 - INFO - Selected 16 clinical features from 40 possible
+2025-12-12 19:16:14,076 - INFO - Removed 166736 duplicate records using ['stay_id', 'subject_id']
+2025-12-12 19:16:14,079 - INFO - Handling missing values...
+2025-12-12 19:16:14,081 - INFO - Imputing 9 numeric columns with median
+2025-12-12 19:16:14,085 - INFO - Imputing 4 categorical columns with mode
+2025-12-12 19:16:14,088 - WARNING - Still have 209 missing values after imputation
+2025-12-12 19:16:14,089 - WARNING -   icd_code: 209 missing values
+2025-12-12 19:16:14,089 - INFO - Cleaning complete. Final shape: (430, 16)
+2025-12-12 19:16:14,089 - INFO - 
+============================================================
+2025-12-12 19:16:14,089 - INFO - STEP 3: ENGINEERING FEATURES
+2025-12-12 19:16:14,090 - INFO - ============================================================
+2025-12-12 19:16:14,090 - INFO - Engineering features
+2025-12-12 19:16:14,090 - INFO - Using icd_code for diagnosis mapping
+2025-12-12 19:16:14,094 - INFO - Created temperature features from temperature
+2025-12-12 19:16:14,095 - INFO - Created heart rate features from heartrate
+2025-12-12 19:16:14,095 - INFO - Created BP features from sbp
+2025-12-12 19:16:14,097 - INFO - Created oxygen features from o2sat
+2025-12-12 19:16:14,102 - INFO - Created age groups from anchor_age
+2025-12-12 19:16:14,102 - INFO - 
+============================================================
+2025-12-12 19:16:14,103 - INFO - STEP 4: TRAINING MODELS
+2025-12-12 19:16:14,103 - INFO - ============================================================
+2025-12-12 19:16:14,103 - INFO - Preparing features for modeling
+2025-12-12 19:16:14,106 - INFO - Encoding 5 categorical columns
+2025-12-12 19:16:14,115 - INFO - Feature matrix shape: (430, 51)
+2025-12-12 19:16:14,115 - INFO - Target distribution:
+2025-12-12 19:16:14,117 - INFO -   Disease categories: {'unknown': np.int64(209), 'other': np.int64(164), 'cardiovascular': np.int64(33), 'respiratory': np.int64(9), 'gastrointestinal': np.int64(6)}
+2025-12-12 19:16:14,117 - INFO -   Infectious prevalence: 1.16%
+2025-12-12 19:16:14,117 - INFO - Training models
+2025-12-12 19:16:14,128 - INFO - Training disease category model...
+2025-12-12 19:16:14,321 - INFO - Disease model accuracy: 0.767
+2025-12-12 19:16:14,328 - INFO - Training infectious disease model...
+2025-12-12 19:16:14,503 - INFO - Infectious model accuracy: 0.942
+2025-12-12 19:16:14,506 - INFO - 
+============================================================
+2025-12-12 19:16:14,506 - INFO - STEP 5: FEATURE IMPORTANCE ANALYSIS
+2025-12-12 19:16:14,507 - INFO - ============================================================
+2025-12-12 19:16:14,507 - INFO - Analyzing feature importance
+2025-12-12 19:16:14,529 - INFO - Top 10 features for disease prediction:
+2025-12-12 19:16:14,531 - INFO -   sbp                                      -> 0.1252
+2025-12-12 19:16:14,531 - INFO -   heartrate                                -> 0.1143
+2025-12-12 19:16:14,531 - INFO -   anchor_age                               -> 0.1046
+2025-12-12 19:16:14,532 - INFO -   resprate                                 -> 0.0894
+2025-12-12 19:16:14,533 - INFO -   dbp                                      -> 0.0835
+2025-12-12 19:16:14,534 - INFO -   temperature                              -> 0.0795
+2025-12-12 19:16:14,534 - INFO -   o2sat                                    -> 0.0678
+2025-12-12 19:16:14,535 - INFO -   gender_M                                 -> 0.0637
+2025-12-12 19:16:14,536 - INFO -   race_WHITE                               -> 0.0492
+2025-12-12 19:16:14,536 - INFO -   acuity                                   -> 0.0446
+2025-12-12 19:16:14,573 - INFO - Top 10 features for infectious disease detection:
+2025-12-12 19:16:14,574 - INFO -   anchor_age                               -> 0.3842
+2025-12-12 19:16:14,575 - INFO -   sbp                                      -> 0.0861
+2025-12-12 19:16:14,575 - INFO -   resprate                                 -> 0.0519
+2025-12-12 19:16:14,576 - INFO -   dbp                                      -> 0.0496
+2025-12-12 19:16:14,576 - INFO -   race_PORTUGUESE                          -> 0.0474
+2025-12-12 19:16:14,577 - INFO -   heartrate                                -> 0.0456
+2025-12-12 19:16:14,577 - INFO -   temperature                              -> 0.0437
+2025-12-12 19:16:14,578 - INFO -   race_WHITE                               -> 0.0427
+2025-12-12 19:16:14,578 - INFO -   age_group_elderly                        -> 0.0399
+2025-12-12 19:16:14,578 - INFO -   o2sat                                    -> 0.0358
+2025-12-12 19:16:14,578 - INFO - 
+============================================================
+2025-12-12 19:16:14,578 - INFO - STEP 6: SAVING ARTIFACTS
+2025-12-12 19:16:14,579 - INFO - ============================================================
+2025-12-12 19:16:14,579 - INFO - Output directory: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 19:16:14,611 - INFO - Saved disease_model to C:\Users\SETHULAKSHMI K B\PI2\output\disease_model.pkl
+2025-12-12 19:16:14,636 - INFO - Saved infectious_model to C:\Users\SETHULAKSHMI K B\PI2\output\infectious_model.pkl
+2025-12-12 19:16:14,644 - INFO - Saved 51 feature names to C:\Users\SETHULAKSHMI K B\PI2\output\feature_names.csv
+2025-12-12 19:16:14,647 - INFO - Saved metrics to C:\Users\SETHULAKSHMI K B\PI2\output\model_metrics.txt
+2025-12-12 19:16:14,757 - INFO - Saved feature importance to C:\Users\SETHULAKSHMI K B\PI2\output\feature_importance.csv
+2025-12-12 19:16:14,758 - INFO -  Deployment artifacts saved successfully
+2025-12-12 19:16:14,758 - INFO - 
+============================================================
+2025-12-12 19:16:14,758 - INFO - DEPLOYMENT SUMMARY
+2025-12-12 19:16:14,758 - INFO - ============================================================
+2025-12-12 19:16:14,758 - INFO - Input data: C:\Users\SETHULAKSHMI K B\PI2\data\merged_dataset.csv
+2025-12-12 19:16:14,758 - INFO - Initial shape: (167166, 78)
+2025-12-12 19:16:14,758 - INFO - Final shape: (430, 24)
+2025-12-12 19:16:14,759 - INFO - Features used: 51
+2025-12-12 19:16:14,759 - INFO - disease_model: Accuracy = 0.7674
+2025-12-12 19:16:14,759 - INFO - infectious_model: Accuracy = 0.9419
+2025-12-12 19:16:14,759 - INFO - Artifacts saved to: C:\Users\SETHULAKSHMI K B\PI2\output
+2025-12-12 19:16:14,759 - INFO - ============================================================
+2025-12-12 19:16:14,759 - INFO - DEPLOYMENT COMPLETE
+2025-12-12 19:16:14,759 - INFO - ============================================================
