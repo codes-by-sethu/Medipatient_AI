@@ -1,0 +1,7 @@
+venv_medipatient/
+__pycache__/
+*.pyc
+
+data/*.csv
+output/*.csv
+venv_medipatient/
