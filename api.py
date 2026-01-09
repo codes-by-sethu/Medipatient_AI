@@ -198,7 +198,7 @@ class RealMediPatientAPI:
         
         try:
             # IMPORTANT: Make sure your gen_ai_module.py has proper Gemini setup
-            api_key = "AIzaSyBdymO3le3SL3SN17IdWk0xqbV9dD3d_9U"  
+            api_key = "YOUR_API_KEY"  
             gen_ai = MedicalGenAI(api_key=api_key)
             logger.info("✅ Gen AI module initialized successfully")
             return gen_ai
