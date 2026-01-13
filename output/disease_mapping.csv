@@ -1,7 +1,9 @@
 class_id,class_name
-0,cardiovascular
-1,gastrointestinal
-2,infectious
-3,injury
-4,other
-5,respiratory
+0,Cardiovascular
+1,Gastrointestinal
+2,Metabolic
+3,Neurological
+4,Other
+5,Respiratory
+6,Sepsis
+7,Trauma

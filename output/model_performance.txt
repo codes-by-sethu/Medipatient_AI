@@ -1,8 +1,0 @@
-AI DIAGNOSIS SYSTEM - TRAINING RESULTS
-==================================================
-
-Features used: 8
-Feature names: temperature, heartrate, resprate, sbp, dbp, o2sat, acuity, anchor_age
-
-Disease categories: cardiovascular, gastrointestinal, infectious, injury, other, respiratory
-Total samples: 146900
