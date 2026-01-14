@@ -1,7 +1,6 @@
+.env
 venv_medipatient/
+data/
+output/
 __pycache__/
-*.pyc
-
-data/*.csv
-output/*.csv
-venv_medipatient/
+*.pkl
