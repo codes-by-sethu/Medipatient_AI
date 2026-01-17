@@ -103,15 +103,11 @@
                                 <button class="btn-icon" id="clearForm" title="Clear Form">
                                     <i class="fas fa-eraser"></i>
                                 </button>
-                                <button class="btn-icon" id="voiceInput" title="Voice Input">
-                                    <i class="fas fa-microphone-alt"></i>
-                                </button>
+                                
                                 <button class="btn-icon" id="showTestCases" title="Test Cases">
                                     <i class="fas fa-vial"></i>
                                 </button>
-                                <button class="btn-icon" id="saveTemplate" title="Save Template">
-                                    <i class="fas fa-save"></i>
-                                </button>
+                                
                             </div>
                         </div>
                         
@@ -132,11 +128,7 @@
                                 Symptoms
                                 <div class="tab-indicator"></div>
                             </button>
-                            <button class="tab-btn" data-tab="history">
-                                <i class="fas fa-history"></i>
-                                History
-                                <div class="tab-indicator"></div>
-                            </button>
+                            
                         </div>
                         
                         <!-- Input Form -->
@@ -815,7 +807,7 @@
                 </div>
             </section>
 
-            <!-- Patients Hub Section (Hidden by default) -->
+            <!-- ==================== FIXED: Patients Hub Section ==================== -->
             <section id="patientsSection" class="main-section" style="display: none;">
                 <div class="card glass">
                     <div class="card-header">
@@ -828,6 +820,14 @@
                                 <h2>Patient History Hub</h2>
                                 <p class="card-subtitle">Review previous patient assessments and analyses</p>
                             </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-icon" id="refreshPatients" title="Refresh History">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button class="btn-icon" id="clearAllHistory" title="Clear All History">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     </div>
                     
@@ -856,14 +856,20 @@
                             </div>
                         </div>
                         
-                        <div class="history-entries" id="historyEntries">
+                        <div class="history-entries" id="patientHistoryEntries">
                             <!-- Patient history will load here -->
+                            <div class="empty-history">
+                                <i class="fas fa-history"></i>
+                                <h4>No Patient History Yet</h4>
+                                <p>Patient assessments will be saved here automatically</p>
+                                <p class="small">Run an analysis from the Clinical Dashboard to start building history</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- AI Reports Section (Hidden by default) -->
+            <!-- ==================== FIXED: AI Reports Section ==================== -->
             <section id="reportsSection" class="main-section" style="display: none;">
                 <div class="card glass">
                     <div class="card-header">
@@ -892,6 +898,12 @@
                         
                         <div class="reports-list" id="reportsList">
                             <!-- Reports will load here -->
+                            <div class="empty-reports">
+                                <i class="fas fa-file-medical"></i>
+                                <h4>No Reports Found</h4>
+                                <p>Run a clinical analysis to generate your first report</p>
+                                <p class="small">Reports are automatically saved as PDF files</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -922,10 +934,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Main Application Script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-    
-    <!-- Use the COMPLETE 3000+ line JavaScript I provided earlier -->
     <script src="static/script.js"></script>
 </body>
 </html>
