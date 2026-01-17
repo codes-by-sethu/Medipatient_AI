@@ -35,18 +35,6 @@ The system processes data through a structured clinical pipeline:
 
 ---
 
-## 📈 Performance & Reliability
-The system is optimized for high sensitivity in critical triage scenarios:
-
-| Category | Recall (Sensitivity) | Status |
-| :--- | :--- | :--- |
-| Sepsis | 100% | ✅ Verified |
-| Trauma | 100% | ✅ Verified |
-| Cardiovascular | 79% | ✅ Verified |
-| Healthy (Other) | 100% | ✅ Verified |
-
----
-
 ## 🚀 Installation & Setup
 
 ### 1. Install Dependencies
