@@ -1,54 +1,156 @@
-# 🚑 MediPatient AI
-### *Hybrid Clinical Intelligence: Statistical ML + LLM Reasoning*
+🚑 MediPatient AI
 
-## 📖 Overview
-**MediPatient AI** is a clinical decision support system that combines the speed of Machine Learning with the deep clinical reasoning of Large Language Models (LLMs). 
+Hybrid Clinical Intelligence: ML + LLM Reasoning (2026 Version)
 
-The system uses a **Double-Check Architecture**:
-1. **Analytical Engine:** A Random Forest model trained on hospital datasets to detect statistical patterns.
-2. **Reasoning Engine:** Google Gemini 1.5 Flash, which validates predictions and provides human-readable explanations.
+A research-grade clinical decision support system combining Random Forest ML for statistical detection with Gemini LLM for clinical reasoning, explainability, and treatment planning.
 
+🧠 System Overview
 
+Double-Check Architecture:
 
----
+Analytical Engine (ML)
 
-## 🏗️ System Architecture
-The system processes data through a structured clinical pipeline:
+Random Forest trained on real hospital data augmented with synthetic textbook cases.
 
-1. **Vitals Ingestion:** Receives patient data (BP, Heart Rate, Temp, O2) via FastAPI.
-2. **Feature Engineering:** Computes clinical flags like `hypotension` and `tachycardia`.
-3. **ML Prediction:** The Random Forest classifies the vitals into a disease category.
-4. **AI Validation:** Gemini Pro reviews the case, identifies "Red Flags," and suggests a treatment plan.
-5. **PDF Reporting:** An automated, professional clinical report is generated for the physician.
+Feature engineering includes vitals + derived flags (fever_high, tachycardia, hypotension, hypoxia).
 
----
+Outputs preliminary diagnosis with confidence scores.
 
-## 📂 Project Structure
-| File | Role |
-| :--- | :--- |
-| medical_orchestrator.py | The Master Brain. Links the ML model with Gemini Pro. |
-| ai_diagnosis.py | Training script using Augmented Textbook Data. |
-| gen_ai_module.py | Integration layer for the Gemini Pro API. |
-| api.py | FastAPI server for real-time diagnostic requests. |
-| report_generator.py | Generates professional PDF clinical reports. |
-| test_system.py | Stress-test suite for clinical accuracy validation. |
+Reasoning Engine (LLM)
 
----
+Google Gemini 1.5 Flash validates ML predictions.
 
-## 🚀 Installation & Setup
+Provides human-readable clinical reasoning, red flags, differential diagnosis.
 
-### 1. Install Dependencies
+Can generate structured treatment plans.
+
+Hybrid Orchestrator
+
+MedicalOrchestrator dynamically combines ML + LLM outputs.
+
+Intelligent override logic ensures Gemini can correct vague or incorrect ML predictions.
+
+Severity and urgency scoring based on evidence-based rules.
+
+🏗️ Architecture Pipeline
+
+Patient Data Intake
+
+Flask API receives structured patient data from frontend (PatientFeatures).
+
+ML Prediction
+
+Random Forest outputs disease category and confidence.
+
+LLM Validation
+
+Gemini AI reviews ML output.
+
+Overrides applied if necessary.
+
+Treatment Planning & Reasoning
+
+Clinical reasoning, differential diagnosis, red flags, and treatment plan included.
+
+Data Storage & Reporting
+
+JSON patient records saved.
+
+PDF reports generated and downloadable.
+
+📂 Project Structure
+File	Role
+api.py	Flask server exposing secure endpoints for patient data, predictions, and report downloads.
+AI_diagnosis.py	Hybrid ML trainer (real + synthetic data).
+gen_ai_module.py	Gemini LLM integration (validation & treatment planning).
+medical_orchestrator.py	Hybrid intelligence orchestrator combining ML + LLM outputs.
+report_generator.py	Generates PDF clinical reports.
+test_system.py	Validation & stress-testing of the pipeline.
+models/	Trained ML model artifacts (.pkl, feature names, disease mapping).
+.env	Gemini API key, model and report directories, optional rate limits.
+templates/	Frontend dashboard (HTML).
+static/	CSS/JS frontend assets.
+🚀 Quick Start
+
+Install dependencies
+
 pip install -r requirements.txt
 
-### 2. Configure API Key
-Create a .env file in the root directory:
-GEMINI_API_KEY=your_key_here
 
-### 3. Run the System
-python ai_diagnosis.py
+Add .env configuration
+
+GEMINI_API_KEY=your_key_here
+MODEL_DIR=./output
+REPORTS_DIR=./output/reports
+PATIENT_DIR=./output/patient_data
+ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5000
+FLASK_ENV=development
+
+
+Train ML model (optional)
+
+python AI_diagnosis.py
+
+
+Start API
+
 python api.py
 
----
 
-## ⚖️ Disclaimer
-*This project is a research prototype for educational purposes only. It is not intended for real-world clinical use or medical diagnosis without professional supervision.*
+Call endpoint /api/predict
+
+POST /api/predict
+{
+  "age": 58,
+  "gender": "male",
+  "temperature": 37.2,
+  "heartRate": 95,
+  "systolicBP": 150,
+  "diastolicBP": 95,
+  "respiratoryRate": 20,
+  "oxygenSaturation": 96,
+  "painScore": 9,
+  "symptoms": ["chest pain", "fatigue", "nausea", "dizziness"],
+  "medical_history": ["hypertension"],
+  "allergies": [],
+  "medications": ["aspirin"]
+}
+
+⚙️ Features
+
+Hybrid AI: ML + LLM reasoning.
+
+Augmented Training: Synthetic cases complement real hospital data.
+
+Explainable AI: Full clinical reasoning, differential diagnoses, red flags.
+
+Intelligent Overrides: Gemini corrects vague/incorrect ML predictions.
+
+Treatment Planning: Structured plans generated dynamically.
+
+Severity & Urgency: Evidence-based scoring and triage.
+
+Secure API: Rate-limited, CORS-restricted, and path-traversal-safe.
+
+PDF Reports: Downloadable via /download/<filename>.
+
+Patient Data Storage: JSON records with retrieval and deletion endpoints.
+
+📡 API Endpoints
+Endpoint	Method	Description
+/api/predict	POST	Hybrid ML+LLM diagnosis, returns PDF link and reasoning.
+/download/<filename>	GET	Download report PDF securely.
+/api/status	GET	Server health check & model/LLM availability.
+/api/get-reports	GET	List latest PDF reports.
+/api/delete-report/<filename>	DELETE	Delete report PDF.
+/api/get-patients	GET	List latest patient JSON records.
+/download-patient/<filename>	GET	Download patient JSON securely.
+/api/delete-patient/<filename>	DELETE	Delete patient JSON record.
+🧪 Testing
+python test_system.py
+
+⚖️ Disclaimer
+
+Research Prototype: Not intended for real-world clinical diagnosis.
+
+Use only under professional supervision.
