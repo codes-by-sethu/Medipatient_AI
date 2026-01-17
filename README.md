@@ -1,105 +1,108 @@
-🚑 MediPatient AI
 
-Hybrid Clinical Intelligence: ML + LLM Reasoning (2026 Version)
+````markdown
+# 🚑 MediPatient AI
 
-A research-grade clinical decision support system combining Random Forest ML for statistical detection with Gemini LLM for clinical reasoning, explainability, and treatment planning.
+**Hybrid Clinical Intelligence: ML + LLM Reasoning (2026 Version)**
 
-🧠 System Overview
+A research-grade clinical decision support system combining **Random Forest ML** for statistical detection with **Gemini LLM** for clinical reasoning, explainability, and treatment planning.
 
-Double-Check Architecture:
+---
 
-Analytical Engine (ML)
+## 🧠 System Overview
 
-Random Forest trained on real hospital data augmented with synthetic textbook cases.
+### Double-Check Architecture
 
-Feature engineering includes vitals + derived flags (fever_high, tachycardia, hypotension, hypoxia).
+**Analytical Engine (ML)**  
+- Random Forest trained on real hospital data + synthetic textbook cases.  
+- Feature engineering includes vitals + derived flags (`fever_high`, `tachycardia`, `hypotension`, `hypoxia`).  
+- Outputs preliminary diagnosis with confidence scores.  
 
-Outputs preliminary diagnosis with confidence scores.
+**Reasoning Engine (LLM)**  
+- Google Gemini 1.5 Flash validates ML predictions.  
+- Provides human-readable clinical reasoning, red flags, and differential diagnosis.  
+- Generates structured treatment plans.  
 
-Reasoning Engine (LLM)
+**Hybrid Orchestrator**  
+- `MedicalOrchestrator` dynamically combines ML + LLM outputs.  
+- Intelligent override ensures Gemini corrects vague or incorrect ML predictions.  
+- Severity and urgency scoring based on evidence-based rules.
 
-Google Gemini 1.5 Flash validates ML predictions.
+---
 
-Provides human-readable clinical reasoning, red flags, differential diagnosis.
+## 🏗️ Architecture Pipeline
 
-Can generate structured treatment plans.
+1. **Patient Data Intake**  
+   - Flask API receives structured patient data from frontend (`PatientFeatures`).  
 
-Hybrid Orchestrator
+2. **ML Prediction**  
+   - Random Forest outputs disease category and confidence.  
 
-MedicalOrchestrator dynamically combines ML + LLM outputs.
+3. **LLM Validation**  
+   - Gemini AI reviews ML output and applies overrides if needed.  
 
-Intelligent override logic ensures Gemini can correct vague or incorrect ML predictions.
+4. **Treatment Planning & Reasoning**  
+   - Clinical reasoning, differentials, red flags, and treatment plan included.  
 
-Severity and urgency scoring based on evidence-based rules.
+5. **Data Storage & Reporting**  
+   - JSON patient records saved.  
+   - PDF reports generated and downloadable.  
 
-🏗️ Architecture Pipeline
+---
 
-Patient Data Intake
+## 📂 Project Structure
 
-Flask API receives structured patient data from frontend (PatientFeatures).
+| File / Folder | Role |
+|---------------|------|
+| `api.py` | Flask server exposing secure endpoints for patient data, predictions, and report downloads. |
+| `AI_diagnosis.py` | Hybrid ML trainer (real + synthetic data). |
+| `gen_ai_module.py` | Gemini LLM integration (validation & treatment planning). |
+| `medical_orchestrator.py` | Hybrid intelligence orchestrator combining ML + LLM outputs. |
+| `report_generator.py` | Generates PDF clinical reports. |
+| `test_system.py` | Validation & stress-testing of the pipeline. |
+| `models/` | Trained ML model artifacts (.pkl, feature names, disease mapping). |
+| `.env` | Gemini API key, model/report directories, optional rate limits. |
+| `templates/` | Frontend dashboard (HTML). |
+| `static/` | CSS/JS frontend assets. |
 
-ML Prediction
+---
 
-Random Forest outputs disease category and confidence.
+## 🚀 Quick Start
 
-LLM Validation
+### 1. Install dependencies
 
-Gemini AI reviews ML output.
-
-Overrides applied if necessary.
-
-Treatment Planning & Reasoning
-
-Clinical reasoning, differential diagnosis, red flags, and treatment plan included.
-
-Data Storage & Reporting
-
-JSON patient records saved.
-
-PDF reports generated and downloadable.
-
-📂 Project Structure
-File	Role
-api.py	Flask server exposing secure endpoints for patient data, predictions, and report downloads.
-AI_diagnosis.py	Hybrid ML trainer (real + synthetic data).
-gen_ai_module.py	Gemini LLM integration (validation & treatment planning).
-medical_orchestrator.py	Hybrid intelligence orchestrator combining ML + LLM outputs.
-report_generator.py	Generates PDF clinical reports.
-test_system.py	Validation & stress-testing of the pipeline.
-models/	Trained ML model artifacts (.pkl, feature names, disease mapping).
-.env	Gemini API key, model and report directories, optional rate limits.
-templates/	Frontend dashboard (HTML).
-static/	CSS/JS frontend assets.
-🚀 Quick Start
-
-Install dependencies
-
+```bash
 pip install -r requirements.txt
+````
 
+### 2. Add `.env` configuration
 
-Add .env configuration
-
+```dotenv
 GEMINI_API_KEY=your_key_here
 MODEL_DIR=./output
 REPORTS_DIR=./output/reports
 PATIENT_DIR=./output/patient_data
 ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5000
 FLASK_ENV=development
+```
 
+### 3. Train ML model (optional)
 
-Train ML model (optional)
-
+```bash
 python AI_diagnosis.py
+```
 
+### 4. Start API
 
-Start API
-
+```bash
 python api.py
+```
 
+### 5. Example request to `/api/predict`
 
-Call endpoint /api/predict
-
+```http
 POST /api/predict
+Content-Type: application/json
+
 {
   "age": 58,
   "gender": "male",
@@ -115,42 +118,52 @@ POST /api/predict
   "allergies": [],
   "medications": ["aspirin"]
 }
+```
 
-⚙️ Features
+---
 
-Hybrid AI: ML + LLM reasoning.
+## ⚙️ Features
 
-Augmented Training: Synthetic cases complement real hospital data.
+* **Hybrid AI:** ML + LLM reasoning.
+* **Augmented Training:** Synthetic cases complement real hospital data.
+* **Explainable AI:** Full clinical reasoning, differentials, red flags.
+* **Intelligent Overrides:** Gemini corrects vague/incorrect ML predictions.
+* **Treatment Planning:** Structured plans generated dynamically.
+* **Severity & Urgency:** Evidence-based scoring and triage.
+* **Secure API:** Rate-limited, CORS-restricted, and path-traversal safe.
+* **PDF Reports:** Downloadable via `/download/`.
+* **Patient Data Storage:** JSON records with retrieval and deletion endpoints.
 
-Explainable AI: Full clinical reasoning, differential diagnoses, red flags.
+---
 
-Intelligent Overrides: Gemini corrects vague/incorrect ML predictions.
+## 📡 API Endpoints
 
-Treatment Planning: Structured plans generated dynamically.
+| Endpoint                         | Method | Description                                              |
+| -------------------------------- | ------ | -------------------------------------------------------- |
+| `/api/predict`                   | POST   | Hybrid ML+LLM diagnosis, returns PDF link and reasoning. |
+| `/download/<filename>`           | GET    | Download report PDF securely.                            |
+| `/api/status`                    | GET    | Server health check & model/LLM availability.            |
+| `/api/get-reports`               | GET    | List latest PDF reports.                                 |
+| `/api/delete-report/<filename>`  | DELETE | Delete report PDF.                                       |
+| `/api/get-patients`              | GET    | List latest patient JSON records.                        |
+| `/download-patient/<filename>`   | GET    | Download patient JSON securely.                          |
+| `/api/delete-patient/<filename>` | DELETE | Delete patient JSON record.                              |
 
-Severity & Urgency: Evidence-based scoring and triage.
+---
 
-Secure API: Rate-limited, CORS-restricted, and path-traversal-safe.
+## 🧪 Testing
 
-PDF Reports: Downloadable via /download/<filename>.
-
-Patient Data Storage: JSON records with retrieval and deletion endpoints.
-
-📡 API Endpoints
-Endpoint	Method	Description
-/api/predict	POST	Hybrid ML+LLM diagnosis, returns PDF link and reasoning.
-/download/<filename>	GET	Download report PDF securely.
-/api/status	GET	Server health check & model/LLM availability.
-/api/get-reports	GET	List latest PDF reports.
-/api/delete-report/<filename>	DELETE	Delete report PDF.
-/api/get-patients	GET	List latest patient JSON records.
-/download-patient/<filename>	GET	Download patient JSON securely.
-/api/delete-patient/<filename>	DELETE	Delete patient JSON record.
-🧪 Testing
+```bash
 python test_system.py
+```
 
-⚖️ Disclaimer
+---
 
-Research Prototype: Not intended for real-world clinical diagnosis.
+## ⚖️ Disclaimer
 
-Use only under professional supervision.
+* **Research Prototype:** Not intended for real-world clinical diagnosis.
+* **Use only under professional supervision.
+
+```
+
+---
