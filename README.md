@@ -1,5 +1,3 @@
-
-````markdown
 # 🚑 MediPatient AI
 
 **Hybrid Clinical Intelligence: ML + LLM Reasoning (2026 Version)**
