@@ -1,7 +1,5 @@
 """
 AUGMENTED HYBRID TRAINER
-Combines Real Hospital Data with 'Textbook' Synthetic Cases.
-This GUARANTEES the model learns Sepsis/Trauma patterns while using real data for the rest.
 """
 import pandas as pd
 import numpy as np
